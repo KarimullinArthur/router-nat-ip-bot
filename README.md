@@ -36,6 +36,7 @@ sudo mv ./dist/update_channel_msg /usr/bin
 If you don't want to place the .env file, edit [`update_channel_msg.py`](./src/update_channel_msg.py#L12-L14)
 
 Then with cron it would looking like this
+
 `(crontab -l ; echo "0 */24 * * *  cd $(pwd) && update_channel_msg")| crontab -`
 
 If you have edited the path of script or .env file, don't forget to edit the path in the crontab.
