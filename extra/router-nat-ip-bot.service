@@ -1,0 +1,17 @@
+[Unit]
+Description=Telegram bot for getting nat ip
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=router-nat-ip
+
+WorkingDirectory=/abs-path/router-nat-ip-bot
+ExecStart=/abs-path/router-nat-ip-bot/venv/bin/python /abs-path/router-nat-ip-bot/src/bot.py
+
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

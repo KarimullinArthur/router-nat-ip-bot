@@ -1,7 +1,7 @@
 import asyncio
 import logging
-import sys
 import os
+import sys
 
 from aiogram import Bot, Dispatcher, html
 from aiogram.client.default import DefaultBotProperties
@@ -13,17 +13,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
+SSH_USER = os.getenv("SSH_USER")
+SERVER_SHELL = os.getenv("SERVER_SHELL")
+bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+
 
 dp = Dispatcher()
 @dp.message(Command("ip"))
 async def get_ip_handler(message: Message) -> None:
     ip = os.popen("upnpc -s | grep ^ExternalIPAddress | cut -c21-").read()[:-1]
-    await message.answer(ip)
-    await message.answer(html.code(f"ssh arthur@{ip} -t /bin/zsh"))
+    await message.answer(html.code(f"ssh {SSH_USER}@{ip} -t /bin/{SERVER_SHELL}"))
 
 
 async def main() -> None:
-    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     await dp.start_polling(bot)
 
 
