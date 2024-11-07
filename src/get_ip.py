@@ -8,10 +8,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-TOKEN = os.getenv("BOT_TOKEN")
-CHANNEL_ID = os.getenv("CHANNEL_ID")
-MESSAGE_ID = os.getenv("MESSAGE_ID")
-CHANNEL_URL= os.getenv("CHANNEL_URL")
+CHANNEL_URL = os.getenv("CHANNEL_URL")
 
 
 async def get_ip(channel_url):
