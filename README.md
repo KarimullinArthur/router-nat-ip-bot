@@ -74,3 +74,5 @@ To
 ```python
 CHANNEL_URL = "https://t.me/username_your_channel/id_your_message" 
 ```
+
+And rebuild.
