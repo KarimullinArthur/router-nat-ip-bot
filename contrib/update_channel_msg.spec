@@ -1,9 +1,9 @@
 # -*- mode: python ; coding: utf-8 -*-
-
+import sys
 
 a = Analysis(
     ['../src/update_channel_msg.py'],
-    pathex=['../venv/lib/python3.12/site-packages/'],
+    pathex=[f'../venv/lib/python3.{sys.version_info.minor}/site-packages/'],
     workpath='../dist',
     binaries=[],
     datas=[],
