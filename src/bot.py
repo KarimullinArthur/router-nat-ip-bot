@@ -19,6 +19,8 @@ bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
 
 dp = Dispatcher()
+
+
 @dp.message(Command("ip"))
 async def get_ip_handler(message: Message) -> None:
     ip = os.popen("upnpc -s | grep ^ExternalIPAddress | cut -c21-").read()[:-1]

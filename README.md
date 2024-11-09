@@ -16,12 +16,25 @@ tar -xvf miniupnpc-$VERSION.tar.gz && cd miniupnpc-$VERSION
 make install
 ```
 
-### [Bot](./src/bot.py)
+* UPnP IGD server enabled on the router (Available on most routers)
+
+
+## Download
+zip archive
+
+`https://github.com/KarimullinArthur/router-nat-ip-bot/archive/refs/heads/master.zip`
+
+git repo
+
+`git clone https://github.com/KarimullinArthur/router-nat-ip-bot.git`
+
+
+## [Bot](./src/bot.py)
 [Already has systemd deamon](./contrib/router-nat-ip-bot.service)
 And [.env](.env.tmp) tamplate 
 
 
-### [Update message on channel](./src/update_channel_msg.py)
+## [Update message on channel](./src/update_channel_msg.py)
 I think apscheduler and queues are bloated for this task. Instead, I would suggest using cron:
 
 `(crontab -l ; echo "0 */24 * * * $(pwd)/venv/bin/python3 $(pwd)/src/update_channel_msg.py")| crontab -`
@@ -31,7 +44,7 @@ I think apscheduler and queues are bloated for this task. Instead, I would sugge
 If your channel is public, you can get ip via [get_ip](./src/get_ip).
 For example
 ```sh
-ssh $(get_ip)
+ssh $(getip) # via pyinstaller
 ```
 
 Don't forget rename [.env.tmp](./.env.tmp)
@@ -40,7 +53,7 @@ mv ./env.tmp .env
 ```
 and add [channel_url in .env](./.env:L4)
 
-#### PyInstaller
+### PyInstaller
 
 If you don't want store venv, you can build pyinstaller file
 ```sh
